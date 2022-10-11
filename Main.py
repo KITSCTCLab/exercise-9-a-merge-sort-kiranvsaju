@@ -2,34 +2,35 @@ from typing import List
 
 def merge_sort(data) -> None:
   # Write code here
-  def merge_sort(data) -> None:
-  if len(data)>1:
-        mid = len(data)//2
-        lefthalf = data[:mid]
-        righthalf = data[mid:]
+  if len(data) >1:
+    mid = (len(data))//2
+    data_left = data[:mid]
+    data_right = data[mid:]
+    merge_sort(data_left)
+    merge_sort(data_right)
+  
+    l = 0 
+    r = 0 
+    m = 0 
 
-        merge_sort(lefthalf)
-        merge_sort(righthalf)
-        i=j=k=0       
-        while i < len(lefthalf) and j < len(righthalf):
-            if lefthalf[i] < righthalf[j]:
-                data[k]=lefthalf[i]
-                i=i+1
-            else:
-                data[k]=righthalf[j]
-                j=j+1
-            k=k+1
+    while l<len(data_left) and r<len(data_right):
+      if data_left[l] <= data_right[r]:
+        data[m] = data_left[l]
+        l+=1
+      else:
+        data[m] = data_right[r]
+        r+=1
+      m+=1
 
-        while i < len(lefthalf):
-            data[k]=lefthalf[i]
-            i=i+1
-            k=k+1
-
-        while j < len(righthalf):
-            data[k]=righthalf[j]
-            j=j+1
-            k=k+1
-
+    while l < len(data_left):
+      data[m] = data_left[l]
+      l+=1
+      m+=1
+    while r < len(data_right):
+      data[m] = data_right[r]
+      r+=1
+      m+=1
+    return data
 
 
 # Do not change the following code
